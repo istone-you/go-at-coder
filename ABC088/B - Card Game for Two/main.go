@@ -18,9 +18,7 @@ func main() {
 	var alice int
 	var bob int
 
-	sort.Slice(a, func(i, j int) bool {
-		return a[i] > a[j]
-	})
+	sort.Sort(sort.Reverse(sort.IntSlice(a)))
 
 	for i, v := range a {
 		if i%2 == 0 {
