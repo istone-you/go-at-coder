@@ -1,33 +1,38 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	var n int
 	fmt.Scan(&n)
 
-	a := make([]int, n)
+	p := make([]int, n)
 
 	for i := 0; i < n; i++ {
-		fmt.Scanf("%d", &a[i])
+		fmt.Scan(&p[i])
 	}
 
 	var max int
-	for _, s := range a {
-		if max < s {
-			max = s
+	for _, v := range p {
+		if max < v {
+			max = v
 		}
 	}
-	if max != a[0] {
-		fmt.Println((max + 1) - a[0])
-	} else {
-		var b int
-		for i := 1; i < n; i++ {
-			if a[0] == a[i] {
-				b = 1
+	var ans int
+
+	if max == p[0] {
+		ans = 0
+		for _, v := range p[1:] {
+			if max == v {
+				ans = 1
 				break
 			}
 		}
-		fmt.Println(b)
+	} else {
+		ans = (max + 1) - p[0]
 	}
+
+	fmt.Println(ans)
 }
